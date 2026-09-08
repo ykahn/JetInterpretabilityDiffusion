@@ -2,9 +2,9 @@
 
 ## Training data
 - Generate training data for the desired process with PYTHIA. We have been using 2M events as a default.
-- Extract the per-branching events. Harry uses `extract_p4_Nbranchs.py`, Yoni uses `pythia_snapshot_common.py`. These are both AI-generated and make different choices, we should double-check that they give the same result. Both segment the branching tree and output a separate PyTorch file for each number of final-state particles.
+- Extract the per-branching events. Harry uses `extract_p4_Nbranchs.py`, Yoni uses `pythia_snapshot_common.py`. These are both AI-generated and make different choices, we should double-check that they give the same result. Both segment the branching tree and output a separate PyTorch or Numpy file for each number of final-state particles.
 This can get quite large so make sure there is enough storage available before you launch the process. 
-- **Normalize the data** so that each event has **unit energy** and save as a `(NEvents, NParticles, 3)` array of 3-vectors. All partons are massless by construction so we only need to save the 3-momentum.
+- **Normalize the data** so that each event has **unit energy** and save as a `(NEvents, NParticles, 3)` PyTorch tensor of 3-vectors. All partons are massless by construction so we only need to save the 3-momentum.
 
 ## Diffusion models
 - Precompute the forward diffusion process checkpoints using `precompute_forward.py` or the SLURM script `precompute.sh`. This saves time during training but takes up a lot of space (12 particles x 2M events x 100 checkpoints = 30 GB), so put these files in your scratch folder.
