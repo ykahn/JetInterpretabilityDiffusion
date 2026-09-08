@@ -6,7 +6,7 @@
 This can get quite large so make sure there is enough storage available before you launch the process. 
 - **Normalize the data** so that each event has **unit energy** and save as a `(NEvents, NParticles, 3)` PyTorch tensor of 3-vectors. All partons are massless by construction so we only need to save the 3-momentum.
 
-## Diffusion models
+## Diffusion models (this code located in the folder `shared/jet_interpretability_diffusion/GenerativeModelsOnPhaseSpace-main` on Killarney)
 - Precompute the forward diffusion process checkpoints using `precompute_forward.py` or the SLURM script `precompute.sh`. This saves time during training but takes up a lot of space (12 particles x 2M events x 100 checkpoints = 30 GB), so put these files in your scratch folder.
   Note that the arguments for this script involve the diffusion schedule ONLY: there is no neural network here yet. The default option is to save the starting data in q-space, which involves a random augmentation by the inverse RAMBO map.
 - Train a score network using `train_lightning.py` or `train.sh`. Right now, the diffusion schedule options need to be set by hand rather than pulling from the pre-computed events; this should be fixed ASAP so there is never any confusion.
