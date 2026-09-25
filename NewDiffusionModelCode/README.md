@@ -1,9 +1,5 @@
 # ImprovedModel: distributed-training copy of the singular-distribution model of record
 
-Copy of `PhaseSpaceDiffusion/improved/record/{model_singular.py, train_singular.py, utils.py}` (the qqg / APS model
-of record, Sept 2026) with data-parallel multi-GPU training added, following the DDP pattern of the original
-`phasespace_diffusion/train.py`.  Everything else (network, schedule, loss, sampler, checkpoint format) is identical
-to `improved/record`; use its `generate.py` / `sample.py` / `evolution.py` on the checkpoints.
 
 | file | change |
 |---|---|
